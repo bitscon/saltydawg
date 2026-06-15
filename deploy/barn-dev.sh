@@ -11,7 +11,7 @@
 #    /home/billyb/workspaces/saltydawg/dist
 #
 #  nginx config: deploy/barn-nginx.conf
-#  nginx site:   saltydawg.barn.workshop.home
+#  nginx site:   dev.saltydawg2.net
 # =============================================================================
 
 set -euo pipefail
@@ -63,5 +63,5 @@ echo ""
 echo "============================================"
 echo "  Barn dev build SUCCESSFUL"
 echo "  Serving from: $PROJECT_ROOT/dist"
-echo "  Dev URL: http://saltydawg.barn.workshop.home"
+echo "  Dev URL: http://dev.saltydawg2.net"
 echo "============================================"

@@ -11,11 +11,11 @@ Run these commands once on the barn server (requires sudo):
 ```bash
 # Copy the nginx config into place
 sudo cp /home/billyb/workspaces/saltydawg/deploy/barn-nginx.conf \
-        /etc/nginx/sites-available/saltydawg.barn.workshop.home
+        /etc/nginx/sites-available/dev.saltydawg2.net
 
 # Enable the site
-sudo ln -sf /etc/nginx/sites-available/saltydawg.barn.workshop.home \
-            /etc/nginx/sites-enabled/saltydawg.barn.workshop.home
+sudo ln -sf /etc/nginx/sites-available/dev.saltydawg2.net \
+            /etc/nginx/sites-enabled/dev.saltydawg2.net
 
 # Test config is valid
 sudo nginx -t
@@ -24,9 +24,9 @@ sudo nginx -t
 sudo nginx -s reload
 ```
 
-After this, `http://saltydawg.barn.workshop.home` will serve the built `dist/` folder.
+After this, `http://dev.saltydawg2.net` will serve the built `dist/` folder.
 
-> **Make sure your local `/etc/hosts` or LAN DNS has `saltydawg.barn.workshop.home` pointing to the barn server IP.**
+> **Make sure your local `/etc/hosts` or LAN DNS has `dev.saltydawg2.net` pointing to the barn server IP (or LAN DNS must resolve dev.saltydawg2.net to the barn).**
 
 ---
 
@@ -81,14 +81,14 @@ GitHub (main)
     │
     │  nginx serves
     ▼
-http://saltydawg.barn.workshop.home
+http://dev.saltydawg2.net
 ```
 
 | Item | Value |
 |---|---|
-| Dev URL | `http://saltydawg.barn.workshop.home` |
+| Dev URL | `http://dev.saltydawg2.net` |
 | nginx config in repo | `deploy/barn-nginx.conf` |
-| nginx config on server | `/etc/nginx/sites-available/saltydawg.barn.workshop.home` |
+| nginx config on server | `/etc/nginx/sites-available/dev.saltydawg2.net` |
 | Document root | `/home/billyb/workspaces/saltydawg/dist` |
 | Dev build script | `bash deploy/barn-dev.sh` |
 
@@ -98,7 +98,7 @@ http://saltydawg.barn.workshop.home
 
 | Problem | Fix |
 |---|---|
-| Site not found | Confirm `saltydawg.barn.workshop.home` resolves to barn IP in hosts/DNS |
+| Site not found | Confirm `dev.saltydawg2.net` resolves to barn IP in hosts/DNS |
 | 403 Forbidden | Check that nginx user can read `/home/billyb/workspaces/saltydawg/dist` |
 | 404 on all pages | Run `bash deploy/barn-dev.sh` to build; confirm `dist/index.html` exists |
 | Stale build showing | Run `bash deploy/barn-dev.sh` again; hard-refresh browser |

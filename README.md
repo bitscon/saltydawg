@@ -66,7 +66,7 @@ Quick reference:
 - Document root: `httpdocs/dist`
 - Deploy command: `bash deploy/plesk-deploy.sh`
 
-### Barn server / nginx (dev)
+### Barn server / nginx (dev — `dev.saltydawg2.net`)
 
 See **[docs/DEPLOY-NGINX.md](docs/DEPLOY-NGINX.md)** for the nginx dev setup.
 

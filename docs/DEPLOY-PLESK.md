@@ -15,7 +15,7 @@ Simple step-by-step guide. No coding required after this is set up once.
 ## B. Connect Plesk to GitHub
 
 1. Log into Plesk.
-2. Open the domain you want to use (e.g. `saltydawgii.com`).
+2. Open the domain you want to use: **`saltydawg2.net`**.
 3. Click **Git** in the domain tools.
 4. Click **Add Repository** (or "Connect to Remote Repository").
 5. Fill in:

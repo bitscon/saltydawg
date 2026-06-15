@@ -2,31 +2,26 @@
 
 Single-page marketing funnel for **Salty Dawg II** fishing charter / river adventure brand on the Merrimack River.
 
-Built with: **Astro** + **Tailwind CSS** + **GSAP**
+Built with: **Astro 6** + **Tailwind CSS 4** + **GSAP 3** — static output.
 
 ---
 
-## Install
+## Quick start (local dev)
 
 ```bash
 npm install
-```
-
-## Dev server
-
-```bash
 npm run dev
-# Opens at http://localhost:4321
+# http://localhost:4321
 ```
 
-## Build for production
+## Production build
 
 ```bash
 npm run build
-# Output in ./dist/ — drop onto Netlify, Vercel, or any static host
+# Output → dist/   (this is what gets deployed)
 ```
 
-## Preview production build locally
+## Preview built site locally
 
 ```bash
 npm run preview
@@ -34,26 +29,46 @@ npm run preview
 
 ---
 
-## Where to edit business details
+## Editing business content
 
-All editable content (phone, prices, trips, FAQs, policies, social URLs) lives in one file:
+All editable business details live in **one file**:
 
 ```
 src/data/site.ts
 ```
 
-Search for any `[Confirm ...]` or `[Insert ...]` string in that file and replace with real info.
+Search for `[Confirm ...]` or `[Insert ...]` to find anything still needing real information.
 
-## Where to add images
+See `TODO-confirmations.md` for the full checklist.
 
-Drop real images into:
+## Adding images
+
+Drop image files into `public/assets/` — exact filenames are listed in:
 
 ```
-public/assets/
+public/assets/ASSET-MANIFEST.md
 ```
 
-See `public/assets/ASSET-MANIFEST.md` for the exact filenames the site expects.
-Images gracefully fall back when missing — add them and they appear automatically.
+---
+
+## Deployment
+
+### Plesk (production)
+
+Plesk pulls from GitHub and runs `bash deploy/plesk-deploy.sh` automatically.
+
+Full setup guide: **[docs/DEPLOY-PLESK.md](docs/DEPLOY-PLESK.md)**
+
+Quick reference:
+- Repo: `https://github.com/bitscon/saltydawg`
+- Branch: `main`
+- App root in Plesk: `httpdocs`
+- Document root: `httpdocs/dist`
+- Deploy command: `bash deploy/plesk-deploy.sh`
+
+### Barn server / nginx (dev)
+
+See **[docs/DEPLOY-NGINX.md](docs/DEPLOY-NGINX.md)** for the nginx dev setup.
 
 ---
 
@@ -62,40 +77,18 @@ Images gracefully fall back when missing — add them and they appear automatica
 ```
 saltydawg/
 ├── src/
-│   ├── data/
-│   │   └── site.ts              ← ALL editable business content
-│   ├── components/
-│   │   ├── Header.astro
-│   │   ├── Hero.astro
-│   │   ├── TripCards.astro
-│   │   ├── Gallery.astro
-│   │   ├── AboutCaptain.astro
-│   │   ├── Expectations.astro   ← What's Included + What to Bring
-│   │   ├── Testimonials.astro   ← ⚠️ Placeholders — add real reviews
-│   │   ├── FAQ.astro
-│   │   └── FooterCTA.astro      ← Final CTA + footer
-│   ├── layouts/
-│   │   └── Layout.astro         ← HTML wrapper + GSAP animations
-│   ├── pages/
-│   │   └── index.astro          ← Assembles all components
-│   └── styles/
-│       └── global.css           ← Brand CSS + Tailwind
-├── public/
-│   └── assets/
-│       └── ASSET-MANIFEST.md    ← Which images go where
-├── TODO-confirmations.md        ← Everything still needing owner input
+│   ├── data/site.ts              ← ALL editable business content
+│   ├── components/               ← Header, Hero, TripCards, Gallery, etc.
+│   ├── layouts/Layout.astro      ← HTML wrapper + GSAP animations
+│   ├── pages/index.astro         ← Assembles all components
+│   └── styles/global.css         ← Brand CSS + Tailwind
+├── public/assets/                ← Drop images here
+│   └── ASSET-MANIFEST.md         ← Which images go where
+├── deploy/
+│   └── plesk-deploy.sh           ← Plesk build + deploy script
+├── docs/
+│   ├── DEPLOY-PLESK.md           ← Plesk setup guide
+│   └── DEPLOY-NGINX.md           ← nginx dev setup guide
+├── TODO-confirmations.md         ← Owner action items before launch
 └── README.md
 ```
-
----
-
-## Facts still needing owner confirmation
-
-See `TODO-confirmations.md` for the full list. Key blockers before launch:
-
-- Phone number
-- Trip prices
-- Launch dock address
-- License / insurance status
-- Real customer testimonials
-- Booking URL

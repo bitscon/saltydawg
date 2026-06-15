@@ -22,3 +22,18 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# env files (never commit secrets)
+.env*
+!.env.example
+
+# Plesk / server artifacts
+*.log
+*.pid

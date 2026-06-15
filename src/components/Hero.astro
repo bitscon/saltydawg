@@ -1,0 +1,142 @@
+---
+import { site } from '../data/site';
+---
+
+<section
+  id="top"
+  class="relative min-h-[90vh] flex items-center overflow-hidden"
+  style="background: linear-gradient(135deg, #060b14 0%, #0d1b3e 40%, #0f3460 70%, #060b14 100%);"
+>
+  <!-- Background hero image -->
+  <div
+    class="absolute inset-0 z-0"
+    style="background-image: url('/assets/flyer-monster-catch.jpg'); background-size: cover; background-position: center top; opacity: 0.25;"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Water-grain texture overlay -->
+  <div
+    class="absolute inset-0 z-0"
+    style="background: linear-gradient(to bottom, rgba(6,11,20,0.1) 0%, rgba(6,11,20,0.6) 60%, rgba(6,11,20,0.95) 100%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Gold splatter accents -->
+  <div
+    class="absolute top-0 right-0 w-1/2 h-full z-0 opacity-10"
+    style="background: radial-gradient(ellipse at 80% 30%, #f5a800 0%, transparent 60%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full py-16 md:py-20">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+
+      <!-- Left: Text content -->
+      <div>
+        <!-- Logo -->
+        <div id="hero-logo" class="mb-6">
+          <img
+            src="/assets/logo-main.png"
+            alt="Salty Dawg II — WAC"
+            class="w-72 md:w-80 max-w-full"
+            style="filter: drop-shadow(0 4px 24px rgba(245,168,0,0.6)) drop-shadow(0 0 60px rgba(245,168,0,0.3));"
+            onerror="this.onerror=null; this.style.display='none';"
+          />
+        </div>
+
+        <!-- Headline -->
+        <h1
+          id="hero-headline"
+          style="font-family:'Bebas Neue','Arial Black',sans-serif; font-size:clamp(3rem,8vw,5.5rem); line-height:1; text-transform:uppercase; text-shadow:0 4px 20px rgba(0,0,0,0.8);"
+        >
+          <span style="color:#ffffff;">This Is Not</span><br/>
+          <span style="color:#f5a800; text-shadow:0 0 30px rgba(245,168,0,0.6), 0 4px 20px rgba(0,0,0,0.8);">Your Average</span><br/>
+          <span style="color:#ffffff;">Boat Ride.</span>
+        </h1>
+
+        <!-- Sub-headline -->
+        <p
+          id="hero-sub"
+          class="mt-4 text-lg md:text-xl"
+          style="font-family:'Barlow Condensed',sans-serif; color:rgba(255,255,255,0.85); letter-spacing:0.03em; text-shadow:0 2px 8px rgba(0,0,0,0.7);"
+        >
+          Stripers, Sunsets &amp; Good Times on the Merrimack River.<br/>
+          <strong style="color:#f5a800;">All Gas. No Brakes. Full Send.</strong>
+        </p>
+
+        <!-- CTA buttons -->
+        <div id="hero-cta" class="mt-8 flex flex-wrap gap-4">
+          <a href={site.phoneHref} class="btn-gold text-base px-6 py-3">
+            <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/>
+            </svg>
+            Call / Text to Book
+          </a>
+          <a href="#trips" class="btn-outline text-base px-6 py-3">
+            View Trips ↓
+          </a>
+        </div>
+
+        <!-- Proof bullets -->
+        <div id="hero-bullets" class="mt-8 flex flex-wrap gap-4 md:gap-6">
+          {[
+            { icon: '⛽', text: 'All Gas, No Brakes' },
+            { icon: '🌅', text: 'Sunset Views' },
+            { icon: '⚓', text: 'Salty Dawg Experience' },
+          ].map(({ icon, text }) => (
+            <div class="flex items-center gap-2">
+              <span class="text-xl">{icon}</span>
+              <span
+                class="text-sm font-semibold uppercase tracking-wide"
+                style="font-family:'Barlow Condensed',sans-serif; color:rgba(255,255,255,0.8);"
+              >
+                {text}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Hero image -->
+      <div id="hero-image" class="relative hidden md:block">
+        <div
+          class="rounded-lg overflow-hidden"
+          style="border:3px solid rgba(245,168,0,0.4); box-shadow: 0 0 60px rgba(245,168,0,0.2), 0 20px 60px rgba(0,0,0,0.6);"
+        >
+          <img
+            src="/assets/flyer-monster-catch.jpg"
+            alt="Salty Dawg II crew holding an absolute monster striper on the Merrimack River"
+            class="w-full h-auto"
+            style="max-height: 520px; object-fit: cover; display:block;"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div
+            class="img-placeholder hidden"
+            style="height:400px; background:linear-gradient(135deg,#0f3460,#0d1b3e); display:none; align-items:center; justify-content:center; color:rgba(245,168,0,0.4); font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.1em;"
+          >
+            ADD HERO IMAGE
+          </div>
+        </div>
+
+        <!-- WAC dog sticker overlay -->
+        <div class="absolute -bottom-6 -right-4 md:-right-6">
+          <img
+            src="/assets/logo-sticker.png"
+            alt="Salty Dawg II WAC sticker"
+            class="w-24 md:w-28"
+            style="filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));"
+            onerror="this.style.display='none';"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Drip bottom edge -->
+  <div
+    class="absolute bottom-0 left-0 right-0 z-10"
+    aria-hidden="true"
+    style="height:60px; background:linear-gradient(to bottom, transparent, #060b14);"
+  ></div>
+</section>

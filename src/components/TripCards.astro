@@ -1,0 +1,106 @@
+---
+import { trips, site } from '../data/site';
+---
+
+<section id="trips" style="background: linear-gradient(180deg, #060b14 0%, #0a1628 50%, #060b14 100%); padding: 80px 0;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <!-- Section header -->
+    <div class="text-center mb-12 fade-up">
+      <p class="section-label">Choose Your Adventure</p>
+      <h2 class="section-title text-white">
+        Pick Your <span style="color:#f5a800;">Trip</span>
+      </h2>
+      <p class="mt-4 text-base md:text-lg" style="color:rgba(255,255,255,0.65); font-family:'Barlow Condensed',sans-serif; max-width:520px; margin-inline:auto;">
+        Striper fishing. Night runs. Booze cruises. Private charters.
+        Something for every crew — <strong style="color:#f5a800;">don't get left at the dock.</strong>
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {trips.map((trip) => (
+        <article class="trip-card flex flex-col">
+          <!-- Image -->
+          <div class="relative" style="height:200px; overflow:hidden;">
+            <img
+              src={trip.image}
+              alt={`${trip.title} — Salty Dawg II charter on the Merrimack River`}
+              style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease;"
+              onmouseover="this.style.transform='scale(1.07)'"
+              onmouseout="this.style.transform='scale(1)'"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div
+              style="display:none; height:200px; background:linear-gradient(135deg,#0f3460,#0d1b3e); align-items:center; justify-content:center; color:rgba(245,168,0,0.4); font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.1em; text-align:center;"
+            >
+              {trip.emoji}<br/>{trip.title.toUpperCase()}
+            </div>
+            <!-- Best-for badge -->
+            <div
+              class="absolute top-3 left-3"
+              style="background:rgba(245,168,0,0.9); color:#060b14; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; padding:3px 10px; border-radius:3px;"
+            >
+              {trip.bestFor}
+            </div>
+          </div>
+
+          <!-- Card body -->
+          <div class="flex flex-col flex-1 p-5">
+            <h3
+              style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:#ffffff; letter-spacing:0.04em; margin-bottom:0.5rem;"
+            >
+              <span style="color:#f5a800;">{trip.emoji}</span> {trip.title}
+            </h3>
+
+            <p
+              class="text-sm flex-1"
+              style="color:rgba(255,255,255,0.7); font-family:'Barlow',sans-serif; line-height:1.6; margin-bottom:1rem;"
+            >
+              {trip.description}
+            </p>
+
+            <!-- Highlights -->
+            <ul class="mb-4 space-y-1">
+              {trip.highlights.map((h) => (
+                <li
+                  class="text-xs"
+                  style="font-family:'Barlow Condensed',sans-serif; color:rgba(245,168,0,0.85); display:flex; align-items:center; gap:6px;"
+                >
+                  <span style="color:#f5a800;">✓</span> {h}
+                </li>
+              ))}
+            </ul>
+
+            <!-- Price + CTA -->
+            <div class="flex items-center justify-between mt-auto pt-4" style="border-top:1px solid rgba(245,168,0,0.15);">
+              <span
+                style="font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:#f5a800; letter-spacing:0.04em;"
+              >
+                ⚓ Starting at {trip.price}
+              </span>
+            </div>
+            <a
+              href={site.phoneHref}
+              class="btn-gold mt-3 justify-center text-sm"
+              style="padding:0.6rem 1rem;"
+            >
+              {trip.cta}
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-14 fade-up">
+      <p class="mb-4 text-base" style="color:rgba(255,255,255,0.6); font-family:'Barlow Condensed',sans-serif; font-size:1.1rem;">
+        Not sure which trip? Reach out — we'll find the right fit.
+      </p>
+      <a href={site.phoneHref} class="btn-gold text-base px-8 py-3">
+        📞 {site.cta.primary}
+      </a>
+    </div>
+
+  </div>
+</section>

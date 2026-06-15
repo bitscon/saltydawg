@@ -1,0 +1,44 @@
+---
+import { faqs } from '../data/site';
+---
+
+<section
+  id="faq"
+  style="background: linear-gradient(180deg, #060b14 0%, #0a1628 100%); padding: 80px 0;"
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-12 fade-up">
+      <p class="section-label">Got Questions?</p>
+      <h2 class="section-title text-white">
+        FAQ
+      </h2>
+    </div>
+
+    <div class="space-y-0 fade-up">
+      {faqs.map(({ q, a }, i) => (
+        <details class="faq-item group">
+          <summary class="faq-question flex justify-between items-center py-5 px-2 gap-4">
+            <span
+              style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.1rem; color:#ffffff; letter-spacing:0.02em;"
+            >
+              {q}
+            </span>
+            <span
+              class="faq-icon shrink-0 text-xl"
+              style="color:#f5a800;"
+              aria-hidden="true"
+            >+</span>
+          </summary>
+          <div
+            class="pb-5 px-2"
+            style="font-family:'Barlow',sans-serif; color:rgba(255,255,255,0.7); line-height:1.7; font-size:0.95rem;"
+          >
+            {a}
+          </div>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>

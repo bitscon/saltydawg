@@ -1,0 +1,150 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${site.name} — ${site.tagline}`,
+  description = `${site.name}. ${site.tagline} ${site.subtagline} Fishing charters and river adventures on the Merrimack River.`,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d1b3e" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/assets/og-image.jpg" />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+
+    <!-- GSAP Animations -->
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion) {
+        // Hero entrance
+        gsap.from('#hero-logo', {
+          opacity: 0,
+          y: -40,
+          duration: 1,
+          ease: 'power3.out',
+          delay: 0.1,
+        });
+        gsap.from('#hero-headline', {
+          opacity: 0,
+          x: -50,
+          duration: 0.9,
+          ease: 'power3.out',
+          delay: 0.3,
+        });
+        gsap.from('#hero-sub', {
+          opacity: 0,
+          x: -40,
+          duration: 0.9,
+          ease: 'power3.out',
+          delay: 0.5,
+        });
+        gsap.from('#hero-cta', {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: 0.7,
+        });
+        gsap.from('#hero-bullets', {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: 0.9,
+        });
+        gsap.from('#hero-image', {
+          opacity: 0,
+          x: 60,
+          duration: 1.2,
+          ease: 'power3.out',
+          delay: 0.2,
+        });
+
+        // Trip cards scroll reveal
+        gsap.utils.toArray<HTMLElement>('.trip-card').forEach((card, i) => {
+          gsap.from(card, {
+            scrollTrigger: { trigger: card, start: 'top 85%', once: true },
+            opacity: 0,
+            y: 50,
+            duration: 0.7,
+            delay: i * 0.12,
+            ease: 'power2.out',
+          });
+        });
+
+        // Gallery images scroll reveal
+        gsap.utils.toArray<HTMLElement>('.gallery-img').forEach((img, i) => {
+          gsap.from(img, {
+            scrollTrigger: { trigger: img, start: 'top 88%', once: true },
+            opacity: 0,
+            scale: 0.92,
+            duration: 0.6,
+            delay: i * 0.08,
+            ease: 'power2.out',
+          });
+        });
+
+        // Section fade-ins
+        gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
+          gsap.from(el, {
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+        });
+
+        // Icon cards
+        gsap.utils.toArray<HTMLElement>('.icon-card').forEach((card, i) => {
+          gsap.from(card, {
+            scrollTrigger: { trigger: card, start: 'top 88%', once: true },
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            delay: i * 0.07,
+            ease: 'power2.out',
+          });
+        });
+
+        // Testimonial cards
+        gsap.utils.toArray<HTMLElement>('.testimonial-card').forEach((card, i) => {
+          gsap.from(card, {
+            scrollTrigger: { trigger: card, start: 'top 85%', once: true },
+            opacity: 0,
+            x: i % 2 === 0 ? -30 : 30,
+            duration: 0.7,
+            ease: 'power2.out',
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

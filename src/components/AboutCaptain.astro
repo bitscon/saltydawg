@@ -1,0 +1,119 @@
+---
+import { site } from '../data/site';
+---
+
+<section
+  id="about"
+  style="background: linear-gradient(135deg, #060b14 0%, #0d1b3e 50%, #060b14 100%); padding: 80px 0; position:relative; overflow:hidden;"
+>
+  <!-- Background gold glow -->
+  <div
+    class="absolute inset-0"
+    style="background: radial-gradient(ellipse at 10% 50%, rgba(245,168,0,0.06) 0%, transparent 60%); pointer-events:none;"
+    aria-hidden="true"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+      <!-- Captain photo -->
+      <div class="fade-up">
+        <div
+          class="relative mx-auto"
+          style="max-width: 440px;"
+        >
+          <div
+            style="border-radius:12px; overflow:hidden; border:3px solid rgba(245,168,0,0.4); box-shadow:0 0 60px rgba(245,168,0,0.15), 0 20px 60px rgba(0,0,0,0.7);"
+          >
+            <img
+              src="/assets/flyer-captain.jpg"
+              alt="Captain of Salty Dawg II — 2026 Boat Hair Don't Care"
+              style="width:100%; height:auto; display:block;"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div
+              style="display:none; height:400px; background:linear-gradient(135deg,#0f3460,#0d1b3e); align-items:center; justify-content:center; color:rgba(245,168,0,0.4); font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:0.1em; text-align:center;"
+            >
+              CAPTAIN PHOTO<br/>ADD TO /public/assets/flyer-captain.jpg
+            </div>
+          </div>
+
+          <!-- Pirate Hanson badge -->
+          <div
+            class="absolute -bottom-4 -right-4 md:-right-6 bg-navy rounded-lg p-3"
+            style="border:2px solid rgba(245,168,0,0.5); box-shadow:0 4px 20px rgba(0,0,0,0.7);"
+          >
+            <img
+              src="/assets/flyer-pirate-hanson.jpg"
+              alt="Pirate Hanson — Salty Dawg II crew"
+              style="width:80px; height:80px; object-fit:cover; border-radius:6px; display:block;"
+              onerror="this.style.display='none';"
+            />
+            <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:#f5a800; text-align:center; margin-top:4px;">
+              Pirate Hanson
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text content -->
+      <div class="fade-up">
+        <p class="section-label">About the Captain & Crew</p>
+        <h2
+          class="section-title"
+          style="color:#ffffff;"
+        >
+          This Is <span style="color:#f5a800;">Our River.</span>
+        </h2>
+
+        <div
+          class="mt-6 space-y-4 text-base"
+          style="color:rgba(255,255,255,0.75); font-family:'Barlow',sans-serif; line-height:1.75;"
+        >
+          <p>
+            We're not a corporate charter company. We're locals who live on this river,
+            know every bend in the Merrimack, and wake up every day thinking about stripers.
+          </p>
+          <p>
+            The Salty Dawg II crew brings the local knowledge, the energy, and the good vibes —
+            whether you're out here chasing giants or just watching the sunset with ice cold drinks
+            and music cranked loud.
+          </p>
+          <p>
+            <strong style="color:#f5a800;">2026 Boat Hair Don't Care.</strong> This is our season.
+            Come get salty with us.
+          </p>
+        </div>
+
+        <!-- Captain trust badges -->
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          {[
+            { icon: '🗺️', label: 'Local Water Knowledge' },
+            { icon: '🦺', label: 'Safety First' },
+            { icon: '👊', label: 'Experienced Crew' },
+            { icon: '🎣', label: '[Confirm License / Insurance]' },
+          ].map(({ icon, label }) => (
+            <div
+              class="flex items-center gap-3 p-3 rounded"
+              style="background:rgba(245,168,0,0.06); border:1px solid rgba(245,168,0,0.15);"
+            >
+              <span class="text-2xl">{icon}</span>
+              <span
+                style="font-family:'Barlow Condensed',sans-serif; font-weight:600; color:rgba(255,255,255,0.85); font-size:0.9rem; letter-spacing:0.02em;"
+              >
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8">
+          <a href={site.phoneHref} class="btn-gold text-base px-6 py-3">
+            📞 {site.cta.primary}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

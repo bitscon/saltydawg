@@ -1,0 +1,82 @@
+---
+import { included, whatToBring } from '../data/site';
+---
+
+<!-- What's Included -->
+<section
+  style="background: #0a1628; padding: 80px 0;"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-12 fade-up">
+      <p class="section-label">What You Get</p>
+      <h2 class="section-title text-white">
+        What's <span style="color:#f5a800;">Included</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {included.map(({ icon, label, note }) => (
+        <div
+          class="icon-card text-center p-5 rounded-lg"
+          style="background:linear-gradient(145deg,#0d1b3e,#091428); border:1px solid rgba(245,168,0,0.2);"
+        >
+          <div class="text-4xl mb-3">{icon}</div>
+          <p
+            style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1rem; color:#ffffff; text-transform:uppercase; letter-spacing:0.04em;"
+          >
+            {label}
+          </p>
+          {note && (
+            <p
+              class="mt-1 text-xs"
+              style="color:#f5a800; font-family:'Barlow',sans-serif; font-style:italic;"
+            >
+              {note}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- What to Bring -->
+<section
+  style="background: linear-gradient(180deg, #0a1628 0%, #060b14 100%); padding: 60px 0 80px;"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-10 fade-up">
+      <p class="section-label">Pack It Up</p>
+      <h2 class="section-title text-white">
+        What to <span style="color:#f5a800;">Bring</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
+      {whatToBring.map(({ icon, item }) => (
+        <div
+          class="icon-card flex items-center gap-4 p-4 rounded-lg"
+          style="background:rgba(245,168,0,0.04); border:1px solid rgba(245,168,0,0.15);"
+        >
+          <span class="text-2xl shrink-0">{icon}</span>
+          <span
+            style="font-family:'Barlow Condensed',sans-serif; font-size:1rem; color:rgba(255,255,255,0.85); font-weight:600; letter-spacing:0.02em;"
+          >
+            {item}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <p
+      class="text-center mt-8 fade-up"
+      style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; color:rgba(255,255,255,0.5); font-style:italic;"
+    >
+      Serious inquiries only. Bring gear. Bring energy. Let's get it.
+    </p>
+
+  </div>
+</section>

@@ -6,6 +6,7 @@ File names must match exactly.
 | File | What it is | Source in zip |
 |------|-----------|----------------|
 | `logo-main.png` | Primary Salty Dawg II drip logo (blue/gold on white/transparent) | Logo PNG |
+| `logo-main-transparent.png` | Cropped transparent derivative of `logo-main.png` for header/hero use | Generated from Logo PNG |
 | `logo-sticker.png` | WAC boxer dog sticker logo (color version) | Sticker PNG |
 | `flyer-booze-cruise.jpg` | Booze cruise flyer — boat at sunset, "ALL GAS NO BRAKES FULL SEND" | Booze cruise flyer |
 | `flyer-captain.jpg` | "2026 BOAT HAIR DON'T CARE" captain flyer | Captain photo flyer |

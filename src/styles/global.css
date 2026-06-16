@@ -38,6 +38,16 @@ body {
   line-height: 1.6;
 }
 
+.mobile-menu-button {
+  display: inline-flex;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-button {
+    display: none;
+  }
+}
+
 /* ── CTA Buttons ──────────────────────────────────────────── */
 .btn-gold {
   display: inline-flex;
@@ -73,6 +83,11 @@ body {
   box-shadow: 0 0 30px rgba(245, 168, 0, 0.7), 0 6px 20px rgba(0,0,0,0.6);
   filter: brightness(1.1);
 }
+.btn-gold:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px rgba(245, 168, 0, 0.35), 0 0 30px rgba(245, 168, 0, 0.7);
+}
 
 .btn-outline {
   display: inline-flex;
@@ -96,6 +111,10 @@ body {
   border-color: #f5a800;
   color: #f5a800;
   transform: translateY(-2px);
+}
+.btn-outline:focus-visible {
+  outline: 3px solid #f5a800;
+  outline-offset: 4px;
 }
 
 /* ── Section headings ─────────────────────────────────────── */

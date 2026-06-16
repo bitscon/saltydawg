@@ -37,3 +37,8 @@ Thumbs.db
 # Plesk / server artifacts
 *.log
 *.pid
+
+# Source zip and design files — not needed in repo
+public/assets/*.zip
+public/assets/*.psd
+public/assets/salty_dawg_website_template.png

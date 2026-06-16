@@ -18,6 +18,18 @@
 
 set -eu
 
+# Plesk may invoke additional actions from a surprising working directory.
+# Normalize to the repository root and persist logs for File Manager inspection.
+SCRIPT_DIR=${0%/*}
+if [ "$SCRIPT_DIR" = "$0" ]; then
+  SCRIPT_DIR="."
+fi
+cd "$SCRIPT_DIR/.." || exit 1
+
+LOG_FILE="plesk-deploy.log"
+: > "$LOG_FILE" || exit 1
+exec > "$LOG_FILE" 2>&1
+
 # ── Log helpers ───────────────────────────────────────────────────────────────
 ok()   { printf '[OK]    %s\n' "$*"; }
 warn() { printf '[WARN]  %s\n' "$*"; }

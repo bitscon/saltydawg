@@ -30,7 +30,7 @@ fail() { echo -e "${RED}[FAIL]${NC}  $*"; exit 1; }
 
 echo "============================================"
 echo "  Salty Dawg II — Deployment starting"
-echo "  $(date '+%Y-%m-%d %H:%M:%S')"
+echo "  Deployment task started"
 echo "============================================"
 
 # ── Locate npm ────────────────────────────────────────────────────────────────

@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # =============================================================================
 #  Salty Dawg II — Plesk Deployment Script
 #  Runs after Plesk pulls the latest code from GitHub.
 #
 #  Usage (set this as the Additional Deployment Action in Plesk):
-#    bash deploy/plesk-deploy.sh
+#    sh deploy/plesk-deploy.sh
 #
 #  Requirements:
 #    - Node.js and npm must be available (see TROUBLESHOOTING below).
@@ -16,17 +16,12 @@
 #    common Plesk Node paths automatically.
 # =============================================================================
 
-set -euo pipefail
+set -eu
 
-# ── Colour helpers ────────────────────────────────────────────────────────────
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m' # No Colour
-
-ok()   { echo -e "${GREEN}[OK]${NC}    $*"; }
-warn() { echo -e "${YELLOW}[WARN]${NC}  $*"; }
-fail() { echo -e "${RED}[FAIL]${NC}  $*"; exit 1; }
+# ── Log helpers ───────────────────────────────────────────────────────────────
+ok()   { printf '[OK]    %s\n' "$*"; }
+warn() { printf '[WARN]  %s\n' "$*"; }
+fail() { printf '[FAIL]  %s\n' "$*"; exit 1; }
 
 echo "============================================"
 echo "  Salty Dawg II — Deployment starting"
@@ -35,17 +30,10 @@ echo "============================================"
 
 # ── Locate npm ────────────────────────────────────────────────────────────────
 # Plesk sometimes installs Node under non-standard paths.
-PLESK_NODE_PATHS=(
-  "/opt/plesk/node/22/bin"
-  "/opt/plesk/node/20/bin"
-  "/opt/plesk/node/18/bin"
-  "/usr/share/plesk-nodejs/bin"
-  "/usr/local/bin"
-  "/usr/bin"
-)
+PLESK_NODE_PATHS="/opt/plesk/node/22/bin /opt/plesk/node/20/bin /opt/plesk/node/18/bin /usr/share/plesk-nodejs/bin /usr/local/bin /usr/bin"
 
 NPM_BIN=""
-for p in "${PLESK_NODE_PATHS[@]}"; do
+for p in $PLESK_NODE_PATHS; do
   if [ -x "$p/npm" ]; then
     NPM_BIN="$p/npm"
     break
@@ -53,7 +41,7 @@ for p in "${PLESK_NODE_PATHS[@]}"; do
 done
 
 # Fall back to whatever is on PATH
-if [ -z "$NPM_BIN" ] && command -v npm &>/dev/null; then
+if [ -z "$NPM_BIN" ] && command -v npm >/dev/null 2>&1; then
   NPM_BIN="$(command -v npm)"
 fi
 

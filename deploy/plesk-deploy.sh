@@ -41,13 +41,18 @@ echo "  Deployment task started"
 echo "============================================"
 
 # ── Locate npm ────────────────────────────────────────────────────────────────
-# Plesk sometimes installs Node under non-standard paths.
-PLESK_NODE_PATHS="/opt/plesk/node/24/bin /opt/plesk/node/22/bin /opt/plesk/node/20/bin /opt/plesk/node/18/bin /usr/share/plesk-nodejs/bin /usr/local/bin /usr/bin"
+# Plesk sometimes installs Node under versioned, non-standard paths.
+NPM_CANDIDATES="/opt/plesk/node/*/bin/npm /opt/plesk/nodejs/*/bin/npm /usr/share/plesk-nodejs/bin/npm /usr/local/bin/npm /usr/bin/npm"
 
 NPM_BIN=""
-for p in $PLESK_NODE_PATHS; do
-  if [ -x "$p/npm" ]; then
-    NPM_BIN="$p/npm"
+for candidate in $NPM_CANDIDATES; do
+  for npm_path in $candidate; do
+    if [ -x "$npm_path" ]; then
+      NPM_BIN="$npm_path"
+      break
+    fi
+  done
+  if [ -n "$NPM_BIN" ]; then
     break
   fi
 done
@@ -58,8 +63,22 @@ if [ -z "$NPM_BIN" ] && command -v npm >/dev/null 2>&1; then
 fi
 
 if [ -z "$NPM_BIN" ]; then
+  warn "npm not found. Checked candidates:"
+  for candidate in $NPM_CANDIDATES; do
+    for npm_path in $candidate; do
+      warn "  $npm_path"
+    done
+  done
   fail "npm not found. Enable Node.js in Plesk domain settings, then re-deploy."
 fi
+
+NPM_DIR=${NPM_BIN%/*}
+case "$NPM_DIR" in
+  /opt/plesk/*|/usr/share/plesk-nodejs/*)
+    PATH="$NPM_DIR:${PATH:-}"
+    export PATH
+    ;;
+esac
 
 NPM_VERSION=$("$NPM_BIN" --version 2>/dev/null || echo "unknown")
 ok "Using npm: $NPM_BIN (${NPM_VERSION})"

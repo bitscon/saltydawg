@@ -42,7 +42,7 @@ echo "============================================"
 
 # ── Locate npm ────────────────────────────────────────────────────────────────
 # Plesk sometimes installs Node under non-standard paths.
-PLESK_NODE_PATHS="/opt/plesk/node/22/bin /opt/plesk/node/20/bin /opt/plesk/node/18/bin /usr/share/plesk-nodejs/bin /usr/local/bin /usr/bin"
+PLESK_NODE_PATHS="/opt/plesk/node/24/bin /opt/plesk/node/22/bin /opt/plesk/node/20/bin /opt/plesk/node/18/bin /usr/share/plesk-nodejs/bin /usr/local/bin /usr/bin"
 
 NPM_BIN=""
 for p in $PLESK_NODE_PATHS; do

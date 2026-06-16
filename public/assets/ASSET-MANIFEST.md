@@ -14,6 +14,7 @@ File names must match exactly.
 | `flyer-monster-catch.jpg` | "ABSOLUTE MONSTER" — two men holding giant striper | Monster catch flyer |
 | `flyer-striper-fishing.jpg` | Night striper fishing flyer — "LET'S CATCH SOME GIANTS" | Striper fishing flyer |
 | `flyer-good-eating.jpg` | "DOWN BELOW GOOD EATING" — fried fish food photo | Good eating flyer |
+| `flyer-underrated-redfish.jpg` | Atlantic redfish "SO UNDERRATED" good eating flyer | Redfish flyer |
 | `og-image.jpg` | Open Graph image for social sharing | Use booze cruise or monster catch flyer |
 
 ## Image format tips

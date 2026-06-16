@@ -86,7 +86,7 @@ export const gallery = [
   { src: "/assets/flyer-striper-fishing.jpg", alt: "Salty Dawg II night striper fishing charter" },
   { src: "/assets/flyer-pirate-hanson.jpg", alt: "Pirate Hanson looking for the tuna — Salty Dawg II crew" },
   { src: "/assets/flyer-good-eating.jpg", alt: "Down below good eating — fresh fish from the Salty Dawg II" },
-  { src: "/assets/flyer-captain.jpg", alt: "2026 Boat Hair Don't Care — Salty Dawg II captain" },
+  { src: "/assets/flyer-underrated-redfish.jpg", alt: "Atlantic redfish is underrated and great eating — Salty Dawg II" },
 ];
 
 export const included = [
